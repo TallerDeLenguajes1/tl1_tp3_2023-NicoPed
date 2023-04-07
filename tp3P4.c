@@ -80,6 +80,8 @@ int main(){
         totalPagarCliente = 0;
         mtzClientes ++;
     }
+    free(mtzClientes->Productos);
+    free(mtzClientes);
     return 0;
 }
 
