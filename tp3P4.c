@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 char *TiposProductos[]={"Galletas","Snack","Cigarrillos","Caramelos","Bebidas"};
-
+//CON LISTA ENLAZADA
 struct{
 int ProductoID; //Numerado en ciclo iterativo
 int Cantidad; // entre 1 y 10
@@ -18,18 +18,64 @@ Producto *Productos ;//El tamaño de este arreglo depende de la variable
                     // “CantidadProductosAPedir”
 }typedef Cliente;
 
+typedef struct nodo
+{
+    Cliente cliente;
+    sNodo* siguiente;
+}sNodo;
 
 int precioProd(Producto *prod);
-
+sNodo* crearListaVacia();
+void insertarNodo(sNodo** lista, sNodo* nuevoNodo);
 int main(){
-    char aux[60];
-    int cantClientes,indiceAuxTipoDeProducto;
+    char buffer[60];
+    int indiceAuxTipoDeProducto,respuesta;
+
+    sNodo* cabecera;
+    cabecera = crearListaVacia();
+    
+    do
+    {
+        printf("\n1- Ingresar cliente nuevo");
+        printf("\n10- Salir");    
+        fflush(stdin);
+        scanf("%d", &respuesta);
+//printf("\n");
+        switch (respuesta)
+        {
+        case 1:
+
+            break;
+        case 10:
+            printf("");
+            break;
+        default:
+            printf("\nIngrese una opción valida");
+            break;
+        }
+    } while (respuesta != 10);
+    
+    return 0;
+}
+
+int precioProd(Producto *prod){
+
+    return (prod->Cantidad * prod->PrecioUnitario);
+}
+
+sNodo* crearListaVacia(){
+    return NULL;
+}
+
+
+/*
     do
     {
     fflush(stdin);
     printf("\nIngrese la cantidad de Clientes que visito: ");
     scanf("%d",&cantClientes);
     } while (cantClientes > 5 || cantClientes < 1 );
+
 
     Cliente *mtzClientes = (Cliente *) malloc(sizeof(Cliente)*cantClientes);
 
@@ -39,9 +85,9 @@ int main(){
     {  
         fflush(stdin); 
         printf("\nIngrese el nombre del usuario: ");
-        gets(aux);
-        mtzClientes[i].NombreCliente = (char *) malloc( sizeof (char) * strlen(aux));
-        strcpy(mtzClientes[i].NombreCliente, aux);
+        gets(buffer);
+        mtzClientes[i].NombreCliente = (char *) malloc( sizeof (char) * strlen(buffer));
+        strcpy(mtzClientes[i].NombreCliente, buffer);
         mtzClientes[i].ClienteID = i;
         mtzClientes[i].CantidadProductosAPedir= 1+rand()%5;
         mtzClientes[i].Productos = (Producto *) malloc(sizeof(Producto) * mtzClientes[i].CantidadProductosAPedir);
@@ -82,10 +128,4 @@ int main(){
     }
     free(mtzClientes->Productos);
     free(mtzClientes);
-    return 0;
-}
-
-int precioProd(Producto *prod){
-
-    return (prod->Cantidad * prod->PrecioUnitario);
-}
+*/

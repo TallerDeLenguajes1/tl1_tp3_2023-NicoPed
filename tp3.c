@@ -3,11 +3,11 @@
 
 #define FILAS 5
 #define COLUMNAS 12
-#define MAX 15
+
 int main (){
 
 float mtzProduccion [FILAS][COLUMNAS];
-char meses[12][MAX] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
+char *meses[] = {"Enero","Febrero","Marzo","Abril","Mayo","Junio","Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"};
 // a. Cargue dicha matriz con valores aleatorios entre 10000 y 50000.
 
 for (int i = 0; i < FILAS; i++)

@@ -1,25 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#define CANT_NOMBRES 5
+
 #define MAX 15
 
 int main(){
-    char Aux[60];
-    char *pNombres[CANT_NOMBRES];
+    char Buffer[60];
+    int CANT_NOMBRES;
+    printf("\nIngrese la cantidad de nombres a ingresar: ");
+    scanf("%d",&CANT_NOMBRES);
+    char **pNombres;
+    pNombres = (char **) malloc(sizeof(char) * CANT_NOMBRES);
     for (int i = 0; i < CANT_NOMBRES; i++)
     {
-        printf("Ingrese un nombre: ");
-        gets(Aux);
-        pNombres[i] = (char *) malloc(sizeof (char *) * strlen(Aux));
-        strcpy(pNombres[i],Aux);
+        fflush(stdin);
+        printf("Ingrese el nombre: ");
+        gets(Buffer);
+        pNombres[i] = (char * ) malloc(sizeof(char) * strlen(Buffer) + 1);
+        strcpy(pNombres[i], Buffer);
     }
-    for (int i = 0; i < CANT_NOMBRES; i++)
+    for (int j = 0; j < CANT_NOMBRES; j++)
     {
-        printf("Nombre %d : ",i);
-        puts(pNombres[i]);
-        //printf("Nombre %d : %s \n",i,pNombres[i]);
-        free(pNombres[i]);
+        printf("\nNombre Nro %d: %s",j,pNombres[j]);
+        free(pNombres[j]);
     }
 
     return 0;    
